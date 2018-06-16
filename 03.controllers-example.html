@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    <input type="text" ng-model="nume"> <br> <!--ng-model doar pe input, textarea si select-->
+    <input type="text" ng-model="prenume"> <br> <!--ng-model doar pe input, textarea si select-->
+
+    <p>Nume: {{nume}}</p>
+    <p>Prenume: {{prenume}}</p>
+
+    <script>
+        var app = angular.module('myApp', []); // angular js module
+
+        // Angularjs Controller
+        app.controller('myCtrl', function($scope) {
+            $scope.nume = 'Popa';
+            $scope.prenume = "George";
+        });
+    </script>
+</div>
+
+</body>
+</html>

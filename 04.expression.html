@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="" ng-init="myCol='lightblue'">
+    <input type="text" style="background: {{myCol}}" ng-model="myCol">
+
+
+    <div ng-init="cantitate=2; cost=5;">
+        {{cantitate * cost}}
+    </div>
+
+
+    <div ng-init="nume='Popa'; prenume='George'">
+        {{ nume + ' ' + prenume}} <br>
+        <span ng-bind="nume + ' ' + prenume"></span>
+    </div>
+
+
+    <!--Anguar Objects-->
+    <div ng-init="person={age:'20', job:'tester'}">
+        {{person.age + ' ' + person.job}}
+    </div>
+
+
+    <!--Angularjs Arrays-->
+    <div ng-init="numbers = [0,5,7]">
+        {{ numbers[2] }}
+    </div>
+
+</div>
+
+</body>
+</html>
