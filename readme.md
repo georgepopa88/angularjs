@@ -20,9 +20,12 @@ AngularJS extends HTML with ng-directives.
 - The **ng-app** directive defines the application, the **ng-controller** directive defines the controller.
 
 
+<h4>AngularJS Modules</h4>
 
-
-
+- An AngularJS module defines an application.
+- The module is a container for the different parts of an application.
+- The module is a container for the application controllers.
+- Controllers always belong to a module.
 
 
 
