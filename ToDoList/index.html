@@ -9,10 +9,20 @@
             width: 500px;
             margin: 0 auto;
             padding: 30px;
+            text-align: center;
         }
         .done {
             text-decoration: line-through;
             color: #888;
+        }
+
+        ul {
+            margin-top: 30px;
+        }
+
+        ul li {
+            list-style-type: none;
+            text-align: left;
         }
     </style>
 </head>
@@ -20,7 +30,7 @@
 
 <body ng-app="toDoApp">
 
-    <div ng-controller="toDoCtrl">
+    <div ng-controller="toDoCtrl" ng-init="clearList()">
 
         <form name="frm" ng-submit="addToDo()">
             <input type="text" required name="newToDo" ng-model="newToDo">
@@ -31,7 +41,7 @@
         <button ng-click="clearList()">Clear list</button>
 
         <ul>
-            <li ng-repeat="todo in todos">
+            <li ng-repeat="todo in todos" ng-hide="todo.title == null">
                 <input type="checkbox" ng-model="todo.done">
                 <span ng-class="{'done': todo.done}">{{todo.title}}</span>
             </li>
