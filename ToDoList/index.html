@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDoList</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+
+    <style>
+        body {
+            width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        .done {
+            text-decoration: line-through;
+            color: #888;
+        }
+    </style>
+</head>
+
+
+<body ng-app="toDoApp">
+
+    <div ng-controller="toDoCtrl">
+
+        <form name="frm" ng-submit="addToDo()">
+            <input type="text" required name="newToDo" ng-model="newToDo">
+            <button ng-disabled="frm.$invalid">Add</button>
+        </form>
+
+        <button ng-click="clearCompleted()">Clear completed</button>
+        <button ng-click="clearList()">Clear list</button>
+
+        <ul>
+            <li ng-repeat="todo in todos">
+                <input type="checkbox" ng-model="todo.done">
+                <span ng-class="{'done': todo.done}">{{todo.title}}</span>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <script>
+        angular
+            .module('toDoApp', [])
+            .controller('toDoCtrl', ['$scope', function($scope) {
+
+                $scope.todos = [
+                    {"title": "Lapte", "done": false}
+                ];
+
+                $scope.addToDo = function() {
+                    $scope.todos.push({"title": $scope.newToDo, "done": false});
+                    $scope.newToDo = "";
+                };
+
+                $scope.clearCompleted = function() {
+                    $scope.todos = $scope.todos.filter(function (item) {
+                        return !item.done;
+                    })
+                }
+
+                $scope.clearList = function() {
+                    $scope.todos = [{}];
+                }
+
+
+            }]);
+    </script>
+
+
+</body>
+</html>
