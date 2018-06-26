@@ -3,32 +3,14 @@
 <head>
     <title>ToDoList</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-
-    <style>
-        body {
-            width: 500px;
-            margin: 0 auto;
-            padding: 30px;
-            text-align: center;
-        }
-        .done {
-            text-decoration: line-through;
-            color: #888;
-        }
-
-        ul {
-            margin-top: 30px;
-        }
-
-        ul li {
-            list-style-type: none;
-            text-align: left;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts/todoApp.js"></script>
 </head>
 
 
 <body ng-app="toDoApp">
+
+    <h1>Shopping list</h1>
 
     <div ng-controller="toDoCtrl" ng-init="clearList()">
 
@@ -39,6 +21,7 @@
 
         <button ng-click="clearCompleted()">Clear completed</button>
         <button ng-click="clearList()">Clear list</button>
+        <button ng-click="doneList()">Done list</button>
 
         <ul>
             <li ng-repeat="todo in todos" ng-hide="todo.title == null">
@@ -47,36 +30,16 @@
             </li>
         </ul>
 
+
+        <!-- Done list-->
+        <h1>Done list:</h1>
+        <ul>
+            <li ng-repeat="doneToDo in doneToDos">
+                <span>{{doneToDo.title}}</span>
+            </li>
+        </ul>
+
     </div>
-
-
-    <script>
-        angular
-            .module('toDoApp', [])
-            .controller('toDoCtrl', ['$scope', function($scope) {
-
-                $scope.todos = [
-                    {"title": "Lapte", "done": false}
-                ];
-
-                $scope.addToDo = function() {
-                    $scope.todos.push({"title": $scope.newToDo, "done": false});
-                    $scope.newToDo = "";
-                };
-
-                $scope.clearCompleted = function() {
-                    $scope.todos = $scope.todos.filter(function (item) {
-                        return !item.done;
-                    })
-                };
-
-                $scope.clearList = function() {
-                    $scope.todos = [{}];
-                };
-
-
-            }]);
-    </script>
 
 
 </body>

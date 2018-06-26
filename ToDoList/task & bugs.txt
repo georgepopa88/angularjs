@@ -1,0 +1,10 @@
+Tasks
+- de ascuns "Done list:" pana avem task-uri
+- de optimizat pentru mobile interfata, eventual 50/50 layout-ul
+
+
+
+
+
+
+Bugs
